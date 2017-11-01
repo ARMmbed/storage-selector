@@ -1,0 +1,7 @@
+{
+    "target_overrides": {
+        "*": {
+            "storage-selector.storage": "SD_CARD"
+        }
+    }
+}

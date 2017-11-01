@@ -1,0 +1,58 @@
+version: 2
+jobs:
+    build:
+        docker:
+            - image: python:2.7.14
+        working_directory: ~/storage-selector
+        steps:
+            - checkout
+            - run:
+                name: Install Mbed CLI
+                command: pip install mbed-cli
+            - run:
+                name: Install GCC ARM Embedded
+                working_directory: ~/
+                command: |
+                    wget -O gcc_arm_embedded.tar.bz2 https://developer.arm.com/-/media/Files/downloads/gnu-rm/6-2017q2/gcc-arm-none-eabi-6-2017-q2-update-linux.tar.bz2?revision=2cc92fb5-3e0e-402d-9197-bdfc8224d8a5?product=GNU%20Arm%20Embedded%20Toolchain,64-bit,,Linux,6-2017-q2-update
+                    tar -jxf gcc_arm_embedded.tar.bz2
+                    echo "export PATH=$(pwd)/gcc-arm-none-eabi-6-2017-q2-update/bin:${PATH}" >> $BASH_ENV
+                    cat $BASH_ENV
+            - run:
+                name: Create Mbed Application and link library
+                working_directory: ~/
+                command: |
+                    mbed new test
+                    cd test
+                    cp ~/storage-selector/.circleci/main.cpp .
+                    cp ~/storage-selector/.circleci/mbed_app.json .
+                    mbed add ~/storage-selector
+            - run:
+                name: Build K64F SD_CARD
+                working_directory: ~/test
+                command: |
+                    sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "SD_CARD"/g' mbed_app.json
+                    mbed compile -m K64F -t GCC_ARM
+            - run:
+                name: Build K82F SPI_FLASH
+                working_directory: ~/test
+                command: |
+                    sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "SPI_FLASH"/g' mbed_app.json
+                    mbed compile -m K82F -t GCC_ARM
+            - run:
+                name: Build K64F DATA_FLASH
+                working_directory: ~/test
+                command: |
+                    sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "DATA_FLASH"/g' mbed_app.json
+                    mbed compile -m K64F -t GCC_ARM
+            - run:
+                name: Build REALTEK_RTL8195AM INTERNAL_FLASH
+                working_directory: ~/test
+                command: |
+                    sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "INTERNAL_FLASH"/g' mbed_app.json
+                    mbed compile -m REALTEK_RTL8195AM -t GCC_ARM
+            - run:
+                name: Build K64F HEAP
+                working_directory: ~/test
+                command: |
+                    sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "HEAP"/g' mbed_app.json
+                    mbed compile -m K64F -t GCC_ARM
