@@ -5,6 +5,7 @@
 #include "options/heap.h"
 #include "options/spi_flash.h"
 #include "options/dataflash.h"
+#include "options/internal_flash.h"
 
 // These two macros are a bit of magic that concatinate the symbol and
 // function prefix to create a valid function name
