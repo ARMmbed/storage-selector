@@ -5,6 +5,14 @@
             "help": "Options are SD_CARD, SPI_FLASH, DATA_FLASH, INTERNAL_FLASH, and HEAP",
             "required": true
         },
+        "filesystem": {
+            "help": "Options are FAT",
+            "required": false
+        },
+        "mount-point": {
+            "help": "Where to mount the filesystem",
+            "required": false
+        },
         "heap_size": {
             "help": "Size to use for HEAP storage option",
             "value": 2048
