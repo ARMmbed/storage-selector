@@ -14,7 +14,7 @@ Most of these options have additional configuration options. They are designed t
 
 ## Selecting the storage
 
-In you application's `mbed_app.json`, add the following lines:
+In your application's `mbed_app.json`, add the following lines:
 
 ```json
 {
@@ -26,7 +26,7 @@ In you application's `mbed_app.json`, add the following lines:
 }
 ```
 
-Where `K64F` would be replaced by your target and `SPI_FLASH` would be replaced by the storage option.
+Where `K64F` should be replaced by your target and `SPI_FLASH` should be replaced by the storage option.
 
 ## Adding new storage options
 The following should be true for all new storage options:
