@@ -1,0 +1,13 @@
+{
+    "name": "storage-selector",
+    "config": {
+        "storage": {
+            "help": "Options are SDCARD, SPIFLASH, and HEAP",
+            "required": true
+        },
+        "heap_size": {
+            "help": "Size to use for HEAP storage option",
+            "value": 2048
+        }
+    }
+}
