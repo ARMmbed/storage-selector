@@ -1,0 +1,8 @@
+#ifndef STORAGE_SELECTOR_INTERNAL_FLASH_H
+#define STORAGE_SELECTOR_INTERNAL_FLASH_H
+
+#include "FlashIAPBlockDevice.h"
+
+FlashIAPBlockDevice* _storage_selector_INTERNAL_FLASH();
+
+#endif //STORAGE_SELECTOR_INTERNAL_FLASH_H
