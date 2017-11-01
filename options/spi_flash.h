@@ -3,6 +3,6 @@
 
 #include "SPIFBlockDevice.h"
 
-SPIFBlockDevice* _storage_selector_SPIFLASH();
+SPIFBlockDevice* _storage_selector_SPI_FLASH();
 
 #endif //_SPI_FLASH_

@@ -4,7 +4,7 @@
 #include "options/sd_card.h"
 #include "options/heap.h"
 #include "options/spi_flash.h"
-#include "options/dataflash.h"
+#include "options/data_flash.h"
 #include "options/internal_flash.h"
 
 // These two macros are a bit of magic that concatinate the symbol and
