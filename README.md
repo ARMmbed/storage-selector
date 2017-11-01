@@ -6,7 +6,7 @@ The following storage options are supported:
 
 - `SD_CARD` - Uses SPI (defaults to onboard card slot if available)
 - `SPI_FLASH` - Must be a standard Serial NOR Flash device (defaults to onboard flash if available)
-- `DATA_FLASH` - Supports the SPI interface for the AT45 device family
+- `DATA_FLASH` - Supports the SPI interface for the AT45DB device family
 - `INTERNAL_FLASH` - Uses internal flash of device
 - `HEAP` - RAM backed device, most useful for debugging
 
