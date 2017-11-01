@@ -17,8 +17,12 @@
 #ifndef _SD_CARD_H_
 #define _SD_CARD_H_
 
+#ifdef DEVICE_SPI
+
 #include "SDBlockDevice.h"
 
 SDBlockDevice* _storage_selector_SD_CARD();
+
+#endif //DEVICE_SPI
 
 #endif //_SD_CARD_H_
