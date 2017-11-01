@@ -2,7 +2,7 @@
     "name": "storage-selector",
     "config": {
         "storage": {
-            "help": "Options are SDCARD, SPIFLASH, and HEAP",
+            "help": "Options are SDCARD, SPIFLASH, DATAFLASH, and HEAP",
             "required": true
         },
         "heap_size": {
