@@ -17,8 +17,13 @@
 #ifndef STORAGE_SELECTOR_DATAFLASH_H
 #define STORAGE_SELECTOR_DATAFLASH_H
 
+#ifdef DEVICE_SPI
+
 #include "DataFlashBlockDevice.h"
 
+
 DataFlashBlockDevice* _storage_selector_DATA_FLASH();
+
+#endif //DEVICE_SPI
 
 #endif //STORAGE_SELECTOR_DATAFLASH_H

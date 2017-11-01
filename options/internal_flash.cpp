@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifdef DEVICE_FLASH
 
 #include "FlashIAPBlockDevice.h"
 
@@ -21,3 +22,5 @@ FlashIAPBlockDevice* _storage_selector_INTERNAL_FLASH() {
                                   MBED_CONF_FLASHIAP_BLOCK_DEVICE_SIZE);
     return &bd;
 }
+
+#endif //DEVICE_FLASH

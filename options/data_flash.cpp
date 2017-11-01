@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#ifdef DEVICE_SPI
+
 #include "DataFlashBlockDevice.h"
 
 DataFlashBlockDevice* _storage_selector_DATA_FLASH() {
@@ -23,3 +25,5 @@ DataFlashBlockDevice* _storage_selector_DATA_FLASH() {
                                    MBED_CONF_DATAFLASH_SPI_CS);
     return &bd;
 }
+
+#endif //DEVICE_SPI

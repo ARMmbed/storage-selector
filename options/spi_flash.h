@@ -17,8 +17,12 @@
 #ifndef SPI_FLASH_H
 #define SPI_FLASH_H
 
+#ifdef DEVICE_SPI
+
 #include "SPIFBlockDevice.h"
 
 SPIFBlockDevice* _storage_selector_SPI_FLASH();
+
+#endif //DEVICE_SPI
 
 #endif //_SPI_FLASH_
