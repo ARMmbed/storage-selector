@@ -31,28 +31,33 @@ jobs:
                 working_directory: ~/test
                 command: |
                     sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "SD_CARD"/g' mbed_app.json
+                    sed -i -e 's/"storage-selector.filesystem": ".*"/"storage-selector.filesystem": "FAT"/g' mbed_app.json
                     mbed compile -m K64F -t GCC_ARM
             - run:
                 name: Build K82F SPI_FLASH
                 working_directory: ~/test
                 command: |
                     sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "SPI_FLASH"/g' mbed_app.json
+                    sed -i -e 's/"storage-selector.filesystem": ".*"/"storage-selector.filesystem": "LITTLE"/g' mbed_app.json
                     mbed compile -m K82F -t GCC_ARM
             - run:
                 name: Build K64F DATA_FLASH
                 working_directory: ~/test
                 command: |
                     sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "DATA_FLASH"/g' mbed_app.json
+                    sed -i -e 's/"storage-selector.filesystem": ".*"/"storage-selector.filesystem": "FAT"/g' mbed_app.json
                     mbed compile -m K64F -t GCC_ARM
             - run:
                 name: Build REALTEK_RTL8195AM INTERNAL_FLASH
                 working_directory: ~/test
                 command: |
                     sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "INTERNAL_FLASH"/g' mbed_app.json
+                    sed -i -e 's/"storage-selector.filesystem": ".*"/"storage-selector.filesystem": "LITTLE"/g' mbed_app.json
                     mbed compile -m REALTEK_RTL8195AM -t GCC_ARM
             - run:
                 name: Build K64F HEAP
                 working_directory: ~/test
                 command: |
                     sed -i -e 's/"storage-selector.storage": ".*"/"storage-selector.storage": "HEAP"/g' mbed_app.json
+                    sed -i -e 's/"storage-selector.filesystem": ".*"/"storage-selector.filesystem": "FAT"/g' mbed_app.json
                     mbed compile -m K64F -t GCC_ARM
