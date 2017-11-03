@@ -1,5 +1,5 @@
 # Storage Selector
-Library used to select from a list of possible Block Device implementations and FileSystem implementations.
+Storage Selector is used to select from a list of possible Block Device implementations and FileSystem implementations.
 
 ## Storage options
 The following storage options are supported:
@@ -39,12 +39,12 @@ BlockDevice* bd = storage_selector();
 ```
 
 ## Adding new storage options
-The following should be true for all new storage options:
+The following must be true for all new storage options:
 
-- The driver should compile **even when not in use**.
-    - This means if the driver requires config options, you should provide reasonable defaults.
-- The driver should not add to the ROM/RAM usage when not in use.
-- The driver should be wrapped in `#ifdef DEVICE_*` guards for the Mbed HAL APIs it uses to ensure it compiles.
+- The driver must compile **even when not in use**.
+    - This means if the driver requires config options, you must provide reasonable defaults.
+- The driver must not add to the ROM/RAM usage when not in use.
+- The driver must be wrapped in `#ifdef DEVICE_*` guards for the Mbed HAL APIs it uses to ensure it compiles.
     - An example of this can be seen in the [sd-driver](https://github.com/ARMmbed/sd-driver/blob/master/SDBlockDevice.h#L26).
 
 ## Filesystem options
@@ -88,8 +88,8 @@ FileSystem* fs = filesystem_selector("/sd", sd);
 ```
 
 ## Adding new filesystem options
-The following should be true for all new filesystem options:
+The following must be true for all new filesystem options:
 
-- The filesystem should compile **even when not in use**.
-    - This means if the filesystem requires config options, you should provide reasonable defaults.
-- The filesystem should not add to the ROM/RAM usage when not in use.
+- The filesystem must compile **even when not in use**.
+    - This means if the filesystem requires config options, you must provide reasonable defaults.
+- The filesystem must not add to the ROM/RAM usage when not in use.
