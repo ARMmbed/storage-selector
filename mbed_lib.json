@@ -6,7 +6,7 @@
             "required": true
         },
         "filesystem": {
-            "help": "Options are FAT",
+            "help": "Options are FAT and LITTLE",
             "required": false
         },
         "mount-point": {

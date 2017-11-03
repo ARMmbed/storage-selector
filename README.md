@@ -52,6 +52,7 @@ The following must be true for all new storage options:
 The following filesystem options are supported:
 
 - `FAT` - FAT filesystem.
+- `LITTLE` - Experimental fail-safe embedded filesystem.
 
 Most filesystems have additional configuration options. They are designed to have reasonable defaults, but you are encouraged to override these values to suit your needs. See the corresponding driver for more information
 
