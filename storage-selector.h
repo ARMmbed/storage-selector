@@ -23,6 +23,7 @@
 #include "options/data_flash.h"
 #include "options/internal_flash.h"
 #include "options/fat_filesystem.h"
+#include "options/little_filesystem.h"
 
 // These two macros are a bit of magic that concatinate the symbol and
 // function prefix to create a valid function name
