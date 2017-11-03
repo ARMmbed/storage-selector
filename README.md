@@ -65,7 +65,7 @@ In your application's `mbed_app.json`, add the following lines:
     "target_overrides": {
         "NUCLEO_F429ZI": {
             "storage-selector.filesystem": "FAT",
-            "storage-selector.mount-point": "\"/sd\""
+            "storage-selector.mount-point": "\"sd\""
         }
     }
 }
@@ -85,7 +85,7 @@ This will automatically instantiate the Block Device selected and pass it to the
 
 ```
 BlockDevice* sd = storage_selector();
-FileSystem* fs = filesystem_selector("/sd", sd);
+FileSystem* fs = filesystem_selector("sd", sd);
 ```
 
 ## Adding new filesystem options

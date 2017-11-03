@@ -2,7 +2,7 @@
     "target_overrides": {
         "*": {
             "storage-selector.storage": "SD_CARD",
-            "storage-selector.mount-point": "\"/fs\"",
+            "storage-selector.mount-point": "\"fs\"",
             "storage-selector.filesystem": "FAT"
         }
     }
