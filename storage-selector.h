@@ -22,14 +22,29 @@
 #include "options/spi_flash.h"
 #include "options/data_flash.h"
 #include "options/internal_flash.h"
+#include "options/fat_filesystem.h"
 
 // These two macros are a bit of magic that concatinate the symbol and
 // function prefix to create a valid function name
 #define _STORAGE_SELECTOR_concat(dev) _storage_selector_##dev()
 #define _STORAGE_SELECTOR(dev) _STORAGE_SELECTOR_concat(dev)
 
+#define _FILESYSTEM_SELECTOR_concat(dev, ...) _filesystem_selector_##dev(__VA_ARGS__)
+#define _FILESYSTEM_SELECTOR(dev, ...) _FILESYSTEM_SELECTOR_concat(dev, __VA_ARGS__)
+
 BlockDevice* storage_selector() {
     return _STORAGE_SELECTOR(MBED_CONF_STORAGE_SELECTOR_STORAGE);
 }
+
+#ifdef MBED_CONF_STORAGE_SELECTOR_FILESYSTEM
+FileSystem* filesystem_selector(BlockDevice* bd) {
+    return _FILESYSTEM_SELECTOR(MBED_CONF_STORAGE_SELECTOR_FILESYSTEM, MBED_CONF_STORAGE_SELECTOR_MOUNT_POINT, bd);
+}
+
+FileSystem* filesystem_selector(const char* mount = MBED_CONF_STORAGE_SELECTOR_MOUNT_POINT,
+                                BlockDevice* bd = storage_selector()) {
+    return _FILESYSTEM_SELECTOR(MBED_CONF_STORAGE_SELECTOR_FILESYSTEM, mount, bd);
+}
+#endif
 
 #endif //_STORAGE_SELECTOR_H_
