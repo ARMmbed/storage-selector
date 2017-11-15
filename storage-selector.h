@@ -40,7 +40,7 @@ BlockDevice* storage_selector() {
 #ifdef MBED_CONF_STORAGE_SELECTOR_FILESYSTEM
 bool _filesystem_initialized[MBED_CONF_STORAGE_SELECTOR_FILESYSTEM_INSTANCES];
 
-FileSystem* filesystem_selector(BlockDevice* bd, const char* mount, unsigned int instance_number = 0) {
+FileSystem* filesystem_selector(const char* mount, BlockDevice* bd, unsigned int instance_number = 0) {
     // Ensure the requested filesystem instance is inside the declared range
     MBED_ASSERT(instance_number < MBED_CONF_STORAGE_SELECTOR_FILESYSTEM_INSTANCES);
     // Ensure the filesystem instance hasn't already been initialized
@@ -50,7 +50,7 @@ FileSystem* filesystem_selector(BlockDevice* bd, const char* mount, unsigned int
 }
 
 FileSystem* filesystem_selector(const char* mount = MBED_CONF_STORAGE_SELECTOR_MOUNT_POINT) {
-    return filesystem_selector(storage_selector(), mount, 0);
+    return filesystem_selector(mount, storage_selector(), 0);
 }
 
 #endif //MBED_CONF_STORAGE_SELECTOR_FILESYSTEM
