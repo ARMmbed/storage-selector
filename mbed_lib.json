@@ -10,7 +10,7 @@
             "required": false
         },
         "filesystem-instances": {
-            "help": "Number of available filesystems (Default: 1)",
+            "help": "Number of available filesystems/partitions (Default: 1)",
             "value": 1
         },
         "mount-point": {

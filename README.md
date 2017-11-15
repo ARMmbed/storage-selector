@@ -73,6 +73,38 @@ In your application's `mbed_app.json`, add the following lines:
 
 Where `NUCLEO_F429ZI` should be replaced by your target, `FAT` should be replaced by the filesystem option, and `mount-point` should be replaced with the filesystem mounting point. Note the escaped double quotes around the mounting point. You only need to configure a filesystem if you intend to use one.
 
+## Multiple filesystems/partitions
+
+You need to configure an addition config parameter to use multiple filesystems/partitions:
+
+```
+{
+    "target_overrides": {
+        "NUCLEO_F429ZI": {
+            "storage-selector.filesystem-instances": 2
+        }
+    }
+}
+```
+
+The following is an example of using the `MBRBlockDevice` to use multiple partitions.
+
+```c++
+// Get the block device
+BlockDevice *bd = storage_selector();
+bd->init();
+
+// Create and initialize partitions
+MBRBlockDevice::partition(bd , 1, 0x83, 0, 512*1024);
+MBRBlockDevice::partition(bd , 2, 0x83, 512*1024, 1024*1024);
+MBRBlockDevice part1(bd, 1);
+MBRBlockDevice part2(bd, 2);
+
+// Mount the filesystems
+FileSystem *fs1 = filesystem_selector("fs1", &part1, 0);
+FileSystem *fs2 = filesystem_selector("fs2", &part2, 1);
+```
+
 ## Using the filesystem
 
 In your application, you can instantiate the filesystem like this:
