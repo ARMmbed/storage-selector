@@ -17,7 +17,7 @@
 #include "BlockDevice.h"
 #include "LittleFileSystem.h"
 
-LittleFileSystem* _filesystem_selector_LITTLE(const char* mount, BlockDevice* bd) {
-    static LittleFileSystem fs(mount, bd);
-    return &fs;
+LittleFileSystem* _filesystem_selector_LITTLE(const char* mount, BlockDevice* bd, unsigned int instance_num) {
+    static LittleFileSystem fs_instances[MBED_CONF_STORAGE_SELECTOR_FILESYSTEM_INSTANCES * sizeof(LittleFileSystem)];
+    return new(&(fs_instances[instance_num * sizeof(LittleFileSystem)])) LittleFileSystem(mount, bd);
 }

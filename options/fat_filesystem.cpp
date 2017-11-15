@@ -17,7 +17,7 @@
 #include "BlockDevice.h"
 #include "FATFileSystem.h"
 
-FATFileSystem* _filesystem_selector_FAT(const char* mount, BlockDevice* bd) {
-    static FATFileSystem fs(mount, bd);
-    return &fs;
+FATFileSystem* _filesystem_selector_FAT(const char* mount, BlockDevice* bd, unsigned int instance_num) {
+    static FATFileSystem fs_instances[MBED_CONF_STORAGE_SELECTOR_FILESYSTEM_INSTANCES * sizeof(FATFileSystem)];
+    return new(&(fs_instances[instance_num * sizeof(FATFileSystem)])) FATFileSystem(mount, bd);
 }
