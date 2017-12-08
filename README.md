@@ -101,8 +101,8 @@ MBRBlockDevice part1(bd, 1);
 MBRBlockDevice part2(bd, 2);
 
 // Mount the filesystems
-FileSystem *fs1 = filesystem_selector("fs1", &part1, 0);
-FileSystem *fs2 = filesystem_selector("fs2", &part2, 1);
+FileSystem *fs1 = filesystem_selector("fs1", &part1, 1);
+FileSystem *fs2 = filesystem_selector("fs2", &part2, 2);
 ```
 
 ## Using the filesystem

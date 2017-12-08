@@ -13,8 +13,8 @@ int main() {
 
     // Multiple filesystem example (partitions)
     printf("Fs warnings may show here...\r\n");
-    FileSystem *fs1 = filesystem_selector("s1", &slice1, 0);
-    FileSystem *fs2 = filesystem_selector("s2", &slice2, 1);
+    FileSystem *fs1 = filesystem_selector("s1", &slice1, 1);
+    FileSystem *fs2 = filesystem_selector("s2", &slice2, 2);
 
     printf("\r\nReformatting...\r\n");
     fs1->reformat();
