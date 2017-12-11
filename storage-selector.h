@@ -38,14 +38,27 @@ BlockDevice* storage_selector() {
 }
 
 #ifdef MBED_CONF_STORAGE_SELECTOR_FILESYSTEM
-FileSystem* filesystem_selector(BlockDevice* bd) {
-    return _FILESYSTEM_SELECTOR(MBED_CONF_STORAGE_SELECTOR_FILESYSTEM, MBED_CONF_STORAGE_SELECTOR_MOUNT_POINT, bd);
+bool _filesystem_initialized[MBED_CONF_STORAGE_SELECTOR_FILESYSTEM_INSTANCES];
+
+FileSystem* filesystem_selector(const char* mount, BlockDevice* bd, unsigned int instance_number = 1) {
+    // Filesystem numbering starts at 1, not 0
+    // This is meant to mirror the partition numbering present in MBRBlockDevice
+    MBED_ASSERT(instance_number != 0);
+
+    // Move to zero index here for internal operations
+    instance_number--;
+    // Ensure the requested filesystem instance is inside the declared range
+    MBED_ASSERT(instance_number < MBED_CONF_STORAGE_SELECTOR_FILESYSTEM_INSTANCES);
+    // Ensure the filesystem instance hasn't already been initialized
+    MBED_ASSERT(!_filesystem_initialized[instance_number]);
+    _filesystem_initialized[instance_number] = true;
+    return _FILESYSTEM_SELECTOR(MBED_CONF_STORAGE_SELECTOR_FILESYSTEM, mount, bd, instance_number);
 }
 
-FileSystem* filesystem_selector(const char* mount = MBED_CONF_STORAGE_SELECTOR_MOUNT_POINT,
-                                BlockDevice* bd = storage_selector()) {
-    return _FILESYSTEM_SELECTOR(MBED_CONF_STORAGE_SELECTOR_FILESYSTEM, mount, bd);
+FileSystem* filesystem_selector(const char* mount = MBED_CONF_STORAGE_SELECTOR_MOUNT_POINT) {
+    return filesystem_selector(mount, storage_selector(), 1);
 }
-#endif
+
+#endif //MBED_CONF_STORAGE_SELECTOR_FILESYSTEM
 
 #endif //_STORAGE_SELECTOR_H_

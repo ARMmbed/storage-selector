@@ -9,9 +9,13 @@
             "help": "Options are FAT and LITTLE",
             "required": false
         },
+        "filesystem-instances": {
+            "help": "Number of available filesystems/partitions (Default: 1)",
+            "value": 1
+        },
         "mount-point": {
             "help": "Where to mount the filesystem",
-            "required": false
+            "value": "NULL"
         },
         "heap_size": {
             "help": "Size to use for HEAP storage option",
