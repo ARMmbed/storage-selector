@@ -17,6 +17,15 @@
 
 #include "FlashIAPBlockDevice.h"
 
+// Assert that the user has specified a flash region
+#define INTERNAL_FLASH true
+#if MBED_CONF_STORAGE_SELECTOR_STORAGE
+MBED_STATIC_ASSERT(MBED_CONF_FLASHIAP_BLOCK_DEVICE_SIZE > 0,
+    "No flash region specified. Set configuration option "
+    "'flashiap-block-device.size' to an integer greater than 0."
+#endif
+#undef INTERNAL_FLASH
+
 FlashIAPBlockDevice* _storage_selector_INTERNAL_FLASH() {
     static FlashIAPBlockDevice bd(MBED_CONF_FLASHIAP_BLOCK_DEVICE_BASE_ADDRESS,
                                   MBED_CONF_FLASHIAP_BLOCK_DEVICE_SIZE);
