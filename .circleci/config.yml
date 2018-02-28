@@ -24,6 +24,8 @@ jobs:
                     mbed new test
                     cd test
                     cp ~/storage-selector/.circleci/main.cpp .
+                    cp ~/storage-selector/.circleci/sstest.h .
+                    cp ~/storage-selector/.circleci/sstest.cpp .
                     cp ~/storage-selector/.circleci/mbed_app.json .
                     mbed add ~/storage-selector
             - run:

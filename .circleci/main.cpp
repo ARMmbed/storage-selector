@@ -1,10 +1,16 @@
 #include "mbed.h"
+#include "sstest.h"
 #include "storage-selector.h"
 
 int main() {
     printf("Starting...\r\n");
     // Retrieve just the block device and get erase size
     BlockDevice *bd = storage_selector();
+    BlockDevice *bd_same = sstest_indirection();
+
+    // Pointers should be the same
+    MBED_ASSERT(bd == bd_same);
+
     bd->init();
     volatile bd_size_t erase_size = bd->get_erase_size();
 
