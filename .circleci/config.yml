@@ -7,6 +7,9 @@ jobs:
         steps:
             - checkout
             - run:
+                name: Revert pip to version 9.0.3
+                command: pip install pip==9.0.3
+            - run:
                 name: Install Mbed CLI
                 command: pip install mbed-cli
             - run:
