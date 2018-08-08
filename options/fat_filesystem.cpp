@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "BlockDevice.h"
+#include "mbed.h"
 #include "FATFileSystem.h"
 
 FATFileSystem* _filesystem_selector_FAT(const char* mount, BlockDevice* bd, unsigned int instance_num) {

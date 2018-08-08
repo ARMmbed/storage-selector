@@ -17,7 +17,7 @@
 #ifndef STORAGE_SELECTOR_LITTLE_FILESYSTEM_H
 #define STORAGE_SELECTOR_LITTLE_FILESYSTEM_H
 
-#include "BlockDevice.h"
+#include "mbed.h"
 #include "LittleFileSystem.h"
 
 LittleFileSystem* _filesystem_selector_LITTLE(const char* mount, BlockDevice* bd, unsigned int instance_num);

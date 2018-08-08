@@ -17,7 +17,7 @@
 #ifndef STORAGE_SELECTOR_FAT_FILESYSTEM_H
 #define STORAGE_SELECTOR_FAT_FILESYSTEM_H
 
-#include "BlockDevice.h"
+#include "mbed.h"
 #include "FATFileSystem.h"
 
 FATFileSystem* _filesystem_selector_FAT(const char* mount, BlockDevice* bd, unsigned int instance_num);
