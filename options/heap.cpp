@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "HeapBlockDevice.h"
+#include "mbed.h"
 
 HeapBlockDevice* _storage_selector_HEAP() {
     static HeapBlockDevice bd(MBED_CONF_STORAGE_SELECTOR_HEAP_SIZE);

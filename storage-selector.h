@@ -17,7 +17,7 @@
 #ifndef _STORAGE_SELECTOR_H_
 #define _STORAGE_SELECTOR_H_
 
-#include "BlockDevice.h"
+#include "mbed.h"
 #include "filesystem/FileSystem.h"
 
 BlockDevice* storage_selector();
