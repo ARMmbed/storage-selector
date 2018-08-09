@@ -22,6 +22,8 @@
 #include "options/fat_filesystem.h"
 #include "options/little_filesystem.h"
 
+using mbed::BlockDevice;
+
 // These two macros are a bit of magic that concatinate the symbol and
 // function prefix to create a valid function name
 #define _STORAGE_SELECTOR_concat(dev) _storage_selector_##dev()

@@ -17,7 +17,7 @@
 #include "BlockDevice.h"
 #include "FATFileSystem.h"
 
-FATFileSystem* _filesystem_selector_FAT(const char* mount, BlockDevice* bd, unsigned int instance_num) {
+FATFileSystem* _filesystem_selector_FAT(const char* mount, mbed::BlockDevice* bd, unsigned int instance_num) {
     MBED_ALIGN(2*sizeof(uintptr_t)) static char fs_instances[MBED_CONF_STORAGE_SELECTOR_FILESYSTEM_INSTANCES * sizeof(FATFileSystem)];
     return new(&(fs_instances[instance_num * sizeof(FATFileSystem)])) FATFileSystem(mount, bd);
 }
