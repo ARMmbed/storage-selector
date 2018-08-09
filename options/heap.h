@@ -19,6 +19,6 @@
 
 #include "HeapBlockDevice.h"
 
-HeapBlockDevice* _storage_selector_HEAP();
+mbed::HeapBlockDevice* _storage_selector_HEAP();
 
 #endif //_HEAP_H_
