@@ -20,11 +20,11 @@
 #include "BlockDevice.h"
 #include "filesystem/FileSystem.h"
 
-BlockDevice* storage_selector();
+mbed::BlockDevice* storage_selector();
 
 #ifdef MBED_CONF_STORAGE_SELECTOR_FILESYSTEM
 
-mbed::FileSystem* filesystem_selector(const char* mount, BlockDevice* bd, unsigned int instance_number = 1);
+mbed::FileSystem* filesystem_selector(const char* mount, mbed::BlockDevice* bd, unsigned int instance_number = 1);
 
 mbed::FileSystem* filesystem_selector(const char* mount = MBED_CONF_STORAGE_SELECTOR_MOUNT_POINT);
 
