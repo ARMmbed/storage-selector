@@ -1,3 +1,7 @@
+## Deprecation note!
+
+**Please note: This repository is deprecated and it is no longer actively maintained**.
+
 # Storage Selector
 
 Starting with Mbed OS 5.10 the operating system itself offers facilities for handling the storage (get_default_instance). With Mbed OS 5.11 internal flash is also fully supported even for storage.
